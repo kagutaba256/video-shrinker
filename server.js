@@ -30,7 +30,8 @@ const convert = async (input, output) => {
         ffmpeg()
           .input(input)
           .inputOptions(['-hwaccel cuda', '-hwaccel_output_format cuda'])
-          .outputOptions(['-preset fast', '-c:v hevc_nvenc', '-b:v 5M'])
+          .fps(30)
+          .outputOptions(['-c:v hevc_nvenc', '-b:v 5M', '-preset fast'])
           .outputFormat('mp4')
           .on('progress', (progress) => {
             process.stdout.cursorTo(0)
