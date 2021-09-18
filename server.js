@@ -55,7 +55,11 @@ const convert = async (input, output) => {
       }
     })
   }
-  await ffConvert()
+  try {
+    await ffConvert()
+  } catch (err) {
+    console.log(error)
+  }
 }
 
 const main = async () => {
