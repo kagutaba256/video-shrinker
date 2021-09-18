@@ -83,16 +83,20 @@ const main = async () => {
     }
     if (alreadyProcessed) continue
     console.log(`processing ${video}...`)
-    await convert(inputPath, outputPath)
-    db.processed.push({
-      inputPath,
-      outputPath,
-      hash,
-      dateProcessed: Date.now(),
-    })
-    console.log('writing db...')
-    writeDB(db)
-    console.log('written.')
+    try {
+      await convert(inputPath, outputPath)
+      db.processed.push({
+        inputPath,
+        outputPath,
+        hash,
+        dateProcessed: Date.now(),
+      })
+      console.log('writing db...')
+      writeDB(db)
+      console.log('written.')
+    } catch (err) {
+      console.log(`unable to convert ${video}`.red.inverse)
+    }
   }
 }
 
