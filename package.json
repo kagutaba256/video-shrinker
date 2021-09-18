@@ -7,8 +7,8 @@
     "nodemon": "^2.0.12"
   },
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+    "start": "node shrinker.js",
+    "dev": "node shrinker.js"
   },
   "dependencies": {
     "colors": "^1.4.0",
